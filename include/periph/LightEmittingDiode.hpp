@@ -23,6 +23,8 @@ public:
 
     void Disable (uint8_t pin = 0);
 
+    void Flip (uint8_t pin = 0);
+
 
 private:
 
@@ -33,10 +35,6 @@ private:
 
 };
 
-
-template class LightEmittingDiode<1>;
-template class LightEmittingDiode<2>;
-template class LightEmittingDiode<3>;
 
 typedef LightEmittingDiode<1> SingleColorLED;
 typedef LightEmittingDiode<2> BiColorLED;

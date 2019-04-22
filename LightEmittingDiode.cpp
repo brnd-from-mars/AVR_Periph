@@ -31,3 +31,15 @@ void LightEmittingDiode<N>::Disable (uint8_t pin)
 {
     m_Pins[pin].Disable();
 }
+
+
+template<int N>
+void LightEmittingDiode<N>::Flip (uint8_t pin)
+{
+    m_Pins[pin].Flip();
+}
+
+
+template class LightEmittingDiode<1>;
+template class LightEmittingDiode<2>;
+template class LightEmittingDiode<3>;
