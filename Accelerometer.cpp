@@ -8,7 +8,7 @@
 
 Accelerometer::Accelerometer (AnalogInputController& analogInputController)
     : m_AnalogInputController(analogInputController), m_RegisteredPins(0),
-    m_Sensitivity(0), m_Bias(0)
+    m_Sensitivity(0x12), m_Bias(0x54)
 { }
 
 
@@ -75,12 +75,10 @@ int8_t Accelerometer::GetClimbAngle (uint8_t downAxis, uint8_t fwdAxis)
     double accelDown = GetFloatAcceleration(downAxis) / total;
     double accelFwd = GetFloatAcceleration(fwdAxis) / total;
 
-    auto alpha = static_cast<int8_t>(0x7f * acos(accelDown));
+    accelDown = fmin(accelDown, 1.0);
+    double falpha = acos(accelDown) / M_1_PI;
 
-    if (accelFwd < 0)
-    {
-        alpha *= -1;
-    }
+    auto alpha = static_cast<int8_t>(0x7f * falpha) * ((accelFwd < 0) ? -1 : 1);
 
     return alpha;
 }

@@ -17,6 +17,7 @@ public:
 
     void RegisterAxis (uint8_t channel, int16_t initialAccel);
 
+    // TODO: save in EEPROM
     void Calibrate ();
 
     int16_t GetAcceleration (uint8_t axis);
