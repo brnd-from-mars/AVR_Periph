@@ -17,8 +17,9 @@ endif()
 
 target_include_directories(${CMAKE_PROJECT_NAME} PUBLIC include)
 target_sources(${CMAKE_PROJECT_NAME} PUBLIC
-        ${CMAKE_CURRENT_LIST_DIR}/Motor.cpp
         ${CMAKE_CURRENT_LIST_DIR}/Accelerometer.cpp
-        ${CMAKE_CURRENT_LIST_DIR}/LightEmittingDiode.cpp
         ${CMAKE_CURRENT_LIST_DIR}/IRRangeFinder.cpp
-        ${CMAKE_CURRENT_LIST_DIR}/ToggleSwitchCollection.cpp)
+        ${CMAKE_CURRENT_LIST_DIR}/ToggleSwitchCollection.cpp
+        ${CMAKE_CURRENT_LIST_DIR}/LightEmittingDiode.cpp
+        ${CMAKE_CURRENT_LIST_DIR}/Motor.cpp
+        ${CMAKE_CURRENT_LIST_DIR}/Servo.cpp)

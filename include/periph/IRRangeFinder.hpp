@@ -9,6 +9,7 @@
 #include <mcu/io/AnalogInputController.hpp>
 
 
+// TODO: Add linearization
 class IRRangeFinder
 {
 public:

@@ -25,6 +25,8 @@ public:
 
     void Flip (uint8_t pin = 0);
 
+    void SetAll (uint8_t states);
+
 
 private:
 

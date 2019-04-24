@@ -40,6 +40,16 @@ void LightEmittingDiode<N>::Flip (uint8_t pin)
 }
 
 
+template<int N>
+void LightEmittingDiode<N>::SetAll (uint8_t states)
+{
+    for (uint8_t i = 0; i < m_RegisteredPins; ++i)
+    {
+        m_Pins[i].Set((states >> i) & 1);
+    }
+}
+
+
 template class LightEmittingDiode<1>;
 template class LightEmittingDiode<2>;
 template class LightEmittingDiode<3>;
