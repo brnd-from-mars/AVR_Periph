@@ -17,3 +17,14 @@ uint8_t IRRangeFinder::GetRawDistance ()
 {
     return m_Pin.GetValue();
 }
+
+
+uint8_t IRRangeFinder::GetLinearizedDistance ()
+{
+    auto raw = GetRawDistance();
+    if (raw < 0x20)
+    {
+        raw = 0x20;
+    }
+    return 82600 / (25 * raw - 31) - 9;
+}

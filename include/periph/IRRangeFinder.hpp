@@ -9,7 +9,6 @@
 #include <mcu/io/AnalogInputController.hpp>
 
 
-// TODO: Add linearization
 class IRRangeFinder
 {
 public:
@@ -18,6 +17,8 @@ public:
                   AnalogInputController& analogInputController);
 
     uint8_t GetRawDistance ();
+
+    uint8_t GetLinearizedDistance ();
 
 
 private:
