@@ -17,7 +17,8 @@ Motor::Motor (volatile uint8_t* directionPinAPort, uint8_t directionPinABit,
     m_DirectionPinB(directionPinBPort, directionPinBBit),
     m_EncoderPinA(encoderPinAPin, encoderPinABit),
     m_EncoderPinB(encoderPinBPin, encoderPinBBit),
-    m_VelocityPin(velocityPinPort, velocityPinBit, timer, timerOCR)
+    m_VelocityPin(velocityPinPort, velocityPinBit, timer, timerOCR),
+    m_Velocity(0)
 {
     m_DirectionPinA.Disable();
     m_DirectionPinB.Disable();
@@ -34,7 +35,21 @@ void Motor::SetVelocity (int16_t velocity)
     m_DirectionPinA.Set(forward);
     m_DirectionPinB.Set(!forward);
 
-    m_VelocityPin.SetValue(static_cast<uint8_t>(abs(velocity)));
+    velocity = abs(velocity);
+    if (velocity > 0xff)
+    {
+        velocity = 0xff;
+    }
+
+    m_VelocityPin.SetValue(static_cast<uint8_t>(velocity));
+
+    m_Velocity = velocity;
+}
+
+
+int16_t Motor::GetVelocity ()
+{
+    return m_Velocity;
 }
 
 
@@ -52,7 +67,7 @@ void Motor::Update ()
 }
 
 
-int64_t Motor::GetEncoderSteps ()
+int32_t Motor::GetEncoderSteps ()
 {
     return m_EncoderSteps;
 }

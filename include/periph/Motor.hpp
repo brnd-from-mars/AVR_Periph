@@ -26,9 +26,11 @@ public:
 
     void SetVelocity (int16_t velocity);
 
+    int16_t GetVelocity ();
+
     void Update ();
 
-    int64_t GetEncoderSteps ();
+    int32_t GetEncoderSteps ();
 
 
 private:
@@ -45,7 +47,9 @@ private:
 
     bool m_LastEncoderPinAState;
 
-    int64_t m_EncoderSteps;
+    int32_t m_EncoderSteps;
+
+    int16_t m_Velocity;
 
 
 };
